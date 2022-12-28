@@ -1,0 +1,18 @@
+.nav {
+    display: flex;
+    background-color: rgb(253, 255, 253);
+    align-items: center;
+    padding: 0.5em;
+}
+
+.nav > h3 {
+    margin-left: auto;
+    padding-right: 1em;
+}
+.nav img {
+    font-size: 90px;
+    display: flex;
+    /* width: 4%; */
+    height: 0.5em;
+    /* background-color: red; */
+}

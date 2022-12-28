@@ -1,0 +1,29 @@
+.home-page {
+    background-image: linear-gradient(to right, rgb(24, 215, 40) , rgb(35, 98, 43));
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-btn-group {
+    /* background-color: red; */
+}
+
+.home-btn-group button {
+    padding: 1em 2em 1em 2em;
+    border-radius: 5px;
+    border: none;
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-top: 1em;
+    background-color: rgba(154, 197, 158, 0.971);
+    transition: 0.2s;
+}
+
+.home-btn-group button:hover {
+    transform: scale(1.1);
+    color: white;
+}
+

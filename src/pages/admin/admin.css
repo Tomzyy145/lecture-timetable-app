@@ -1,0 +1,68 @@
+* {
+ /* outline: 1px solid limegreen;  */
+}
+
+.admin-Dashboard-page {
+    background-color: rgb(231, 228, 228);
+    /* height: 100vh; */
+}
+
+/* .admin-nav {
+    display: flex;
+    background-color: rgb(253, 255, 253);
+    align-items: center;
+    padding: 0.5em;
+}
+
+.admin-nav > h3 {
+    margin-left: auto;
+    padding-right: 1em;
+}
+.admin-nav img {
+    font-size: 90px;
+    display: flex;
+    /* width: 4%; *
+    height: 0.5em;
+    /* background-color: red; *
+} */
+
+.admin-level-container {
+    background-color: white;
+    margin: 1em;
+    text-align: justify;
+    border-radius: 10px;
+    padding-bottom: 0.5em;
+}
+
+.admin-level-item {
+    font-weight: bold; 
+    /* margin-bottom: 0.5em; */
+    margin-left: 1em;
+    background-color: rgb(25, 242, 25); 
+}
+
+.admin-level-item p {
+    background-color: white;
+    padding: 1em 1em 1em 0em;
+    display: flex;
+    transition: 0.2s;
+}
+
+.admin-level-item p:hover {
+    margin-left: 0.8em;
+}
+
+/* Level Details */
+
+.level-details {
+    background-color: white;
+    margin: 2em 1em 1em 1em;
+    border-radius: 10px;
+    text-align: justify;
+    padding: 1em;
+}
+
+.level-details h2 {
+    font-size: 1.5em;
+    color: rgb(25, 242, 25);
+}

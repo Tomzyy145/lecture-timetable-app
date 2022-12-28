@@ -1,0 +1,22 @@
+.dashboard {
+    background-color: rgb(231, 228, 228);
+    min-height: 100vh;
+}
+
+.dashboard table {
+    margin-top: 1em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dashboard table {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+.dashboard table td,th {
+    padding: 0.7em;
+    border: 1px solid;
+}
+

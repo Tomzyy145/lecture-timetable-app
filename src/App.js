@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { useContext } from 'react'
+import {AppContext} from './context api/myContext'
+import { useGetDataQuery } from "./context api/myContext"
+import {Routes, Route} from 'react-router-dom'
+import Dashboard from './pages/Dashboard'
+import Home from './pages/Home'
+import AdminSign from './pages/SignIn/AdminSign'
+import StudentSign from './pages/SignIn/StudentSign'
+import Admin from './pages/admin/Admin'
+// import Level from './pages/admin/Level'
+import StudentDetails from './pages/admin/studentDetails'
 import './App.css';
 
 function App() {
+
+  const theContext = useContext(AppContext)
+
+  const {data, status, error} = useGetDataQuery()
+  // status == 'fulfilled' ? console.log(data) : console.log('loading')
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='signin'>
+            <Route path='admin' element={<AdminSign />} />
+            <Route path='student' element={<StudentSign data={data} status={status} />} />
+          </Route>
+          <Route path='/admin' element={<Admin data={data} status={status} />}/>
+          <Route path='/admin/:id' element={<StudentDetails data={data} status={status} />}/>
+          <Route path='/dashboard/:id' element={<Dashboard data={data} status={status} />}></Route>
+        </Routes>
     </div>
   );
 }
