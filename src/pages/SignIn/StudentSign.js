@@ -31,25 +31,15 @@ export default function StudentSign({data, status}) {
 
     useMemo(() => courseEnrolled.length >= 5 ? setDisabledState(true) : setDisabledState(false), [courseEnrolled] )
     
-    // courseEnrolled.length >= 5 ? setDisabledState(true) : setDisabledState(false)
     const id = nanoid()
         
     if (status === 'fulfilled') {
         const levelData = data.Levels
         const currentLevel = data.Levels.filter(item => item.id == levelId)
-
-//        console.log(currentLevel.length)
         
         function handleSubmit() {
             // setDisplayError(false)
             setDisplayPending(true)
-
-            console.log(name)
-            console.log(age)
-            console.log(email)
-            console.log(password)
-            console.log(levelId)
-            console.log(courseEnrolled)
 
             if (addRequestStatus == 'idle') {
                 try {
@@ -58,10 +48,7 @@ export default function StudentSign({data, status}) {
                         .then(fulfilled => navigateTo(`/dashboard/${id}`))
                         .catch(rejected => console.error(rejected)) 
     
-                    // setBookTitle('')
-                    // setBookSummary('')
-                    // setBookPrice('')
-                } catch (err) {
+                    } catch (err) {
                     console.error('Failed to save the post', err)
                 } finally {
                     setDisplayPending(false)                    
@@ -81,38 +68,20 @@ export default function StudentSign({data, status}) {
                 <input disabled={disabledState} type="checkbox" value={level} onChange={(e) => handleRegistration({value: (e.target.checked), name: level})} />
             </div>
         )) : <p>Select Level Above..</p>
-
-//        console.log('run')
     
         function handleRegistration({value, name}) {
-            
-            // console.log(courseEnrolled)
-    //        console.log(value)
             if (value == true ) {
                 setCourseEnrolled(prevState => [...prevState, name])
             } else {
                     setCourseEnrolled(prevState => {
                     const newState = prevState.filter(item => item !== name)
-    //                    console.log(newState)
                     return newState
                 })
             } 
-            console.log(courseEnrolled)
+            // console.log(courseEnrolled)
         }            
-            // if (value == true ) {
-            //     if (courseEnrolled.includes(name)) {
-            //         setCourseEnrolled(prevState => {
-            //             const newState = prevState.filter(item => item !== value)
-    
-            //             return newState
-            //         })
-            //     } else {
-            //         setCourseEnrolled(prevState => [...prevState, name])
-            //     }
-            // } 
         
-            const canAdd = [name, age, email, levelId, department, password, courseEnrolled.length == 5].every(Boolean) 
-        // const canAdd = [bookTitle, bookSummary, bookPrice, authorId].every(Boolean) && addRequestStatus == 'idle'
+        const canAdd = [name, age, email, levelId, department, password, courseEnrolled.length == 5].every(Boolean) 
 
         return (
             <div className="student-sign-page">
@@ -164,7 +133,6 @@ export default function StudentSign({data, status}) {
                 <br></br>
                 <p><Link to='/'>Go Back</Link></p>
                 <br></br>
-                {/* {displayError && <h2 style={{color: 'red'}}>Incorrect password or name</h2>} */}
             </div>
         )
     } else {

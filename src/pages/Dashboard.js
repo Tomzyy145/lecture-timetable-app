@@ -92,7 +92,7 @@ export default function Dashboard({data, status}) {
         )
     }
 //    console.log(data)
-    console.log('loading')
+    // console.log('loading')
     return (
         <div className="dashboard">
             <Navbar name={'loading..'} image={studentIcon}/>
