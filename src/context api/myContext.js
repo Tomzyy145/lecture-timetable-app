@@ -11,7 +11,7 @@ export const apiSlice = createApi({
     reducerPath: 'api',
     tagTypes: ['book'],
     // baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:4000/'}), 
-    // 
+    //
     baseQuery: fetchBaseQuery({baseUrl: `https://lecture-timetable-api-production.up.railway.app`}),
     endpoints: builder => ({
         getData: builder.query({
