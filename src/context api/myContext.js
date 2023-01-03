@@ -50,9 +50,9 @@ const AppContext = createContext()
 function ContextProvider(props) {
     
     const [test, setTest] = useState('Jack mangrove')
-
+    const [adminLogged, setAdminLogged] = useState(false)
     return (
-        <AppContext.Provider value={{test, setTest, globalState}}>
+        <AppContext.Provider value={{test, setTest, adminLogged, setAdminLogged, globalState}}>
             {props.children}
         </AppContext.Provider>
     )

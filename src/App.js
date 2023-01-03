@@ -9,6 +9,7 @@ import StudentSign from './pages/SignIn/StudentSign'
 import Admin from './pages/admin/Admin'
 // import Level from './pages/admin/Level'
 import StudentDetails from './pages/admin/studentDetails'
+import StudentLog from './pages/SignIn/studentLogin'
 import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path='student' element={<StudentSign data={data} status={status} />} />
           </Route>
           <Route path='/admin' element={<Admin data={data} status={status} />}/>
+          <Route path='/login' element={<StudentLog data={data} status={status}/>}></Route>
           <Route path='/admin/:id' element={<StudentDetails data={data} status={status} />}/>
           <Route path='/dashboard/:id' element={<Dashboard data={data} status={status} />}></Route>
         </Routes>

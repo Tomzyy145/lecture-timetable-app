@@ -4,27 +4,10 @@
 
 .admin-Dashboard-page {
     background-color: rgb(231, 228, 228);
-    /* height: 100vh; */
+    min-height: 100vh;
+    padding-bottom: 1em;
+     /* height: 100vh;  */
 }
-
-/* .admin-nav {
-    display: flex;
-    background-color: rgb(253, 255, 253);
-    align-items: center;
-    padding: 0.5em;
-}
-
-.admin-nav > h3 {
-    margin-left: auto;
-    padding-right: 1em;
-}
-.admin-nav img {
-    font-size: 90px;
-    display: flex;
-    /* width: 4%; *
-    height: 0.5em;
-    /* background-color: red; *
-} */
 
 .admin-level-container {
     background-color: white;
@@ -65,4 +48,13 @@
 .level-details h2 {
     font-size: 1.5em;
     color: rgb(25, 242, 25);
+}
+
+.level-details ul li::marker {
+    color: rgb(15, 219, 15);
+}
+
+.level-details ul {
+    list-style-type: circle;
+    padding-left: 1em;
 }

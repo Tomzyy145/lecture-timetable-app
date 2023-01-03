@@ -2,11 +2,16 @@ import './adminSign.css'
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react'
+import {AppContext} from '../../context api/myContext'
+
 export default function AdminSign() {
 
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [displayError, setDisplayError] = useState(false)
+
+    const {adminLogged, setAdminLogged} = useContext(AppContext)
 
     const navigateTo = useNavigate()
 
@@ -15,6 +20,7 @@ export default function AdminSign() {
     function handleSubmit(){
         setDisplayError(false)
         if (userName === 'user1234' && password === 'pa$$w0rd') {
+            setAdminLogged(true)
             navigateTo('/admin')
         } else {
             setDisplayError(true)

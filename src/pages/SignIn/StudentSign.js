@@ -20,19 +20,20 @@ export default function StudentSign({data, status}) {
     const [password, setPassword] = useState('')
     const [levelId, setLevelId] = useState('')
     const [displayError, setDisplayError] = useState(false)
-    const id = nanoid()
 
     const [department, setDepartment] = useState('')
     const [disabledState, setDisabledState] = useState(false)
     const [courseEnrolled, setCourseEnrolled] = useState([])
-
+    const [addRequestStatus, setAddRequestStatus] = useState('idle')
+    const [displayPending, setDisplayPending] = useState(false)
     const navigateTo = useNavigate()
     const [addStudents] = useAddStudentsMutation()
 
     useMemo(() => courseEnrolled.length >= 5 ? setDisabledState(true) : setDisabledState(false), [courseEnrolled] )
     
     // courseEnrolled.length >= 5 ? setDisabledState(true) : setDisabledState(false)
-    
+    const id = nanoid()
+        
     if (status === 'fulfilled') {
         const levelData = data.Levels
         const currentLevel = data.Levels.filter(item => item.id == levelId)
@@ -41,6 +42,8 @@ export default function StudentSign({data, status}) {
         
         function handleSubmit() {
             // setDisplayError(false)
+            setDisplayPending(true)
+
             console.log(name)
             console.log(age)
             console.log(email)
@@ -48,20 +51,24 @@ export default function StudentSign({data, status}) {
             console.log(levelId)
             console.log(courseEnrolled)
 
-            try {
-                // setAddRequestStatus('pending')
-                addStudents({id: id, name: name, email: email, age: Number(age), level: Number(levelId), courses: courseEnrolled, password: password, department: department }).unwrap()
-                    .then(fulfilled => navigateTo(`/dashboard/${id}`))
-                    .catch(rejected => console.error(rejected)) 
-
-                // setBookTitle('')
-                // setBookSummary('')
-                // setBookPrice('')
-            } catch (err) {
-                console.error('Failed to save the post', err)
-            } finally {
-                // setAddRequestStatus('idle')
+            if (addRequestStatus == 'idle') {
+                try {
+                    setAddRequestStatus('pending')
+                    addStudents({id: id, name: name, email: email, age: Number(age), level: Number(levelId), courses: courseEnrolled, password: password, department: department }).unwrap()
+                        .then(fulfilled => navigateTo(`/dashboard/${id}`))
+                        .catch(rejected => console.error(rejected)) 
+    
+                    // setBookTitle('')
+                    // setBookSummary('')
+                    // setBookPrice('')
+                } catch (err) {
+                    console.error('Failed to save the post', err)
+                } finally {
+                    setDisplayPending(false)                    
+                    setAddRequestStatus('idle')
+                }
             }
+
         }   
     
         const levelsList = levelData.map(data => (
@@ -118,7 +125,7 @@ export default function StudentSign({data, status}) {
                     </div>
                     <div>
                         <label>Age </label>
-                        <input type={"number"} placeholder={'Enter password'} value={age} onChange={(e) => (setAge(e.target.value), setDisplayError(false))}></input>
+                        <input type={"number"} placeholder={'Enter Age'} value={age} onChange={(e) => (setAge(e.target.value), setDisplayError(false))}></input>
                     </div>
                     <div>
                         <label>Email </label>
@@ -149,16 +156,21 @@ export default function StudentSign({data, status}) {
                     
     
                 </form>
-    
+
+                {displayPending && <p style={{color: 'blue'}}>please wait sending request...</p>}
                 <button disabled={!canAdd} onClick={() => handleSubmit()}>Sign Up</button>
                 <br></br>
+                <p>Already Signed In? Go to Login page <Link to='/login'>Here</Link></p>
                 <br></br>
                 <p><Link to='/'>Go Back</Link></p>
-    
+                <br></br>
                 {/* {displayError && <h2 style={{color: 'red'}}>Incorrect password or name</h2>} */}
             </div>
         )
     } else {
-
+        <div className="student-sign-page">
+            <h1>Sign up as a Student</h1>
+            <p>Loading Data</p>
+        </div>    
     }
-}
+}   

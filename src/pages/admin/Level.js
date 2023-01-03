@@ -14,10 +14,10 @@ export default function Level({data, status, level}){
             <div className="level-details">
                 <h2>Details on {level} Level</h2>
 
-                <h4>Students Curretly Regitered </h4>
+                <h4>Students Currently Registered </h4>
                 {
                     currentLevel[0].Students.length == 0 ? 
-                        <p>No Students currently registered</p> :
+                        <p style={{color: 'red'}}>No Students currently registered</p> :
                     <ul>
                         {currentLevel[0].Students.map(item => (
                             <li onClick={() => navigateTo(`/admin/${item.id}`)}>{item.name}</li>
