@@ -12,7 +12,7 @@ export const apiSlice = createApi({
     tagTypes: ['book'],
     // baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:4000/'}), 
     //
-    baseQuery: fetchBaseQuery({baseUrl: `https://lecture-timetable-api-production.up.railway.app`}),
+    baseQuery: fetchBaseQuery({baseUrl: `https://lecture-timetable-API-production.up.railway.app`}),
     endpoints: builder => ({
         getData: builder.query({
             query: () => '/data',
